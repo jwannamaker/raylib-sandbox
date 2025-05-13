@@ -1,4 +1,3 @@
-# from pyray import *
 import pyray as pr
 
 pr.init_window(900, 900, "Raylib Experiment - Sphere")
