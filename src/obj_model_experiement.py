@@ -4,14 +4,14 @@ from pyray import Vector3
 pr.init_window(900, 900, "Raylib Experiment - OBJ Model Loading")
 
 camera = pr.Camera3D()
-camera.position = pr.Vector3(10.0, 10.0, 10.0)
-camera.target = pr.Vector3(0.0, 0.0, 0.0)
-camera.up = pr.Vector3(0.0, 1.0, 0.0)
-camera.fovy = 60.0
+camera.position = Vector3(10.0, 10.0, 10.0)
+camera.target = Vector3(0.0, 0.0, 0.0)
+camera.up = Vector3(0.0, 1.0, 0.0)
+camera.fovy = 45.0
 camera.projection = pr.CameraProjection.CAMERA_PERSPECTIVE
 
-model_file = "resources/tetrahedron.obj"
-model_position = pr.Vector3(0.0, 0.0, 0.0)
+model_file = "resources/pentagonal_bipyramid.obj"
+model_position = Vector3(0.0, 0.0, 0.0)
 model = pr.load_model(model_file)
 
 pr.disable_cursor()
@@ -41,12 +41,13 @@ def draw_tetrahedron():
     pr.draw_line_3d(c, b, pr.PURPLE)
 
 while not pr.window_should_close():
-    pr.update_camera(camera, pr.CameraMode.CAMERA_ORBITAL)
+    pr.update_camera(camera, pr.CameraMode.CAMERA_FREE)
     pr.clear_background(pr.BLACK)
 
     pr.begin_drawing()
     pr.begin_mode_3d(camera)
-    pr.draw_model(model, model_position, 1.0, p.WHITE)
+    pr.draw_model(model, model_position, 1.0, pr.WHITE)
+    # draw_tetrahedron()
     pr.draw_grid(20, 1.0)
     pr.end_mode_3d()
     pr.end_drawing()
